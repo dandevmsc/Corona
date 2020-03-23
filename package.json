@@ -1,0 +1,30 @@
+{
+  "name": "corona",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "description": "Corona",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.14.0",
+    "mongodb": "^3.5.4",
+    "mongoose": "^5.9.3",
+    "morgan": "^1.7.0",
+    "promises": "^0.2.5",
+    "pug": "^2.0.0-beta6",
+    "serve-favicon": "^2.3.0"
+  },
+  "engines": {
+    "node": "~6.10.x"
+  }
+}

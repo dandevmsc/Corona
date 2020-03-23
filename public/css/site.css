@@ -1,0 +1,29 @@
+
+#mapdiv{height: 450px;
+       width:600px;
+}
+.col-xl-4, col-md-4, mb-4{
+    height:60px;
+}
+.H1 {
+    align-items: center;
+    vertical-align: middle;
+}
+
+
+.fa-angle-double-up {
+    margin-left: 10px !important;
+    color: #DC143C;
+}
+#recoveredfasfa-angle {
+    margin-left: 10px !important;
+    color: #006400 !important;
+}
+#confirmedfasfa-angle {
+    margin-left: 10px !important;
+    color: goldenrod !important;
+}
+
+
+
+
