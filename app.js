@@ -58,8 +58,8 @@ app.get('/', function (req, res, next) {
         dbo.collection("corona").find({}).toArray(function (err, result) {
             if (err) throw err;
 
-            var summary_recovered   = gettimeserieslabel(result, 'description', 'recovered_summary', 0);
-            var summary_change_rec  = gettimeserieslabel(result, 'description', 'recovered_summary', 'change');
+            //var summary_recovered   = gettimeserieslabel(result, 'description', 'recovered_summary', 0);
+            //var summary_change_rec  = gettimeserieslabel(result, 'description', 'recovered_summary', 'change');
             var summary_deaths      = gettimeserieslabel(result, 'description', 'deaths_summary', 0);
             var summary_change_de   = gettimeserieslabel(result, 'description', 'deaths_summary', 'change');
             var summary_confirmed   = gettimeserieslabel(result, 'description', 'confirmed_summary', 0);
@@ -77,8 +77,8 @@ app.get('/', function (req, res, next) {
             res.render('index', {
                 title: 'Line chart',
            
-                summary_recovered  :summary_recovered ,
-                summary_change_rec :summary_change_rec,
+                //summary_recovered  :summary_recovered ,
+                //summary_change_rec :summary_change_rec,
                 summary_deaths     :summary_deaths    ,
                 summary_change_de  :summary_change_de ,
                 summary_confirmed  :summary_confirmed ,
