@@ -320,15 +320,16 @@
         var ar = []
 
         for (i = 0; i < locdatai.length; i++) {
-            ar.push(getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, locdatai[i]['Latitude'], locdatai[i]['Longitude']))
+            ar.push(getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, locdatai[i]['Lat'], locdatai[i]['Long-']))
 
         }
+        console.log(ar)
         var j = ar.indexOf(Math.min(...ar));
-
+        console.log(j)
 
         var lati = position.coords.latitude;
         var longi = position.coords.longitude;
-        x.innerHTML = "Country: " + locdatai[j]['Country-Region'] + ", Province: " + locdatai[j]['Province-State'] + ", Confirmed: " + locdatai[j]['Confirmed'] + ", Deaths: " + locdatai[j]['Deaths'] + ", Recovered: " + locdatai[j]['Recovered']
+        x.innerHTML = "Location: " + locdatai[j]['Combined-Key']  + ", Confirmed: " + locdatai[j]['Confirmed'] + ", Deaths: " + locdatai[j]['Deaths'] + ", Recovered: " + locdatai[j]['Recovered']
     }
 
     function showError(error) {
