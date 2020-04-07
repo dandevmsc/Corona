@@ -27,7 +27,7 @@ const collname = 'Deaths';
 var url = 'mongodb://' + process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + '@145.14.157.129/coronadb';
 //var url = 'mongodb://localhost:27017/coronadb';
 
-console.log(url)
+
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(url);
 
