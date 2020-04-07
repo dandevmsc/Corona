@@ -24,8 +24,8 @@ const dbname = 'coronadb';
 const collname = 'Deaths';
 //var coro = mongoose.model('Deaths')
 
-var url = 'mongodb://' + process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + '@145.14.157.129/coronadb';
-//var url = 'mongodb://localhost:27017/coronadb';
+//var url = 'mongodb://' + process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + '@145.14.157.129/coronadb';
+var url = 'mongodb://localhost:27017/coronadb';
 
 console.log(url)
 const MongoClient = require('mongodb').MongoClient;
@@ -66,14 +66,14 @@ app.get('/', function (req, res, next) {
             var summary_change_de   = gettimeserieslabel(result, 'description', 'deaths_summary', 'change');
             var summary_confirmed   = gettimeserieslabel(result, 'description', 'confirmed_summary', 0);
             var summary_change_con  = gettimeserieslabel(result, 'description', 'confirmed_summary', 'change');
-            var summary_confirmed   = gettimeserieslabel(result, 'description', 'confirmed_summary', 0);
-            var summary_change_con  = gettimeserieslabel(result, 'description', 'confirmed_summary', 'change');
-            var summary_change_con  = gettimeserieslabel(result, 'description', 'confirmed_summary', 'change');
             var locdata             =   getnestarr(result, 'description', 'location_summary');
-            var timeseriesdata      = getnestarr(result, 'description', 'confirmed_timeseries');
+            var timeseriesdata = getnestarr(result, 'description', 'confirmed_timeseries');
+            var timeseriesdeathdata = getnestarr(result, 'description', 'deaths_timeseries');
+            var timeseriesrecovereddata = getnestarr(result, 'description', 'recovered_timeseries');
+            var topcountriesconfirmed = getnestarr(result, 'description', 'confirmed_top');
 
             //console.log(timeseriesdata)
-            console.log(JSON.stringify(timeseriesdata));
+            console.log(JSON.stringify(topcountriesconfirmed));
             
 
             res.render('index', {
@@ -86,7 +86,10 @@ app.get('/', function (req, res, next) {
                 summary_confirmed  :summary_confirmed ,
                 summary_change_con :summary_change_con,
                 locdata            :JSON.stringify(locdata),
-                timeseriesdata     :JSON.stringify(timeseriesdata )   
+                timeseriesdata: JSON.stringify(timeseriesdata),
+                topcountriesconfirmed: JSON.stringify(topcountriesconfirmed),
+                timeseriesdeathdata: JSON.stringify(timeseriesdeathdata),
+                timeseriesrecovereddata: JSON.stringify(timeseriesrecovereddata)
             })
 
             db.close();
@@ -95,6 +98,10 @@ app.get('/', function (req, res, next) {
 })
 app.get('/cookiepolicy', function (req, res, next) {
     res.render('cookiepolicy')
+})
+
+app.get('/robot.txt', function (req, res, next) {
+    res.render('robot')
 })
 
 

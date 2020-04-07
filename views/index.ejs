@@ -23,9 +23,10 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <div class="d-none d-sm-block">
-            <ul class="navbar-nav  bg-gradient-primary sidebar sidebar-dark accordion" data-target="mobile-demo" id="accordionSidebar">
-              <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=2&p=11&l=ur1&category=audible&banner=07A3WNK2V7498JPEV102&f=ifr&linkID=d1cf0e4c4c4c42b88c3aa83bca2a1f4d&t=coronavirusne-21&tracking_id=coronavirusne-21" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
-                                 </div>
+            <ul class="navbar-nav   sidebar sidebar-dark accordion" data-target="mobile-demo" id="accordionSidebar">
+             <iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=29&l=ur1&category=prime_up&banner=10938TRC5R4JSVN4KN02&f=ifr&linkID=5df910d877e320d68793cac6e83d7877&t=tradermaths-20&tracking_id=tradermaths-20" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0" id="audiblead"></iframe>
+            </ul>
+                </div>
         <!-- End of Sidebar -->
 
         <div id="content-wrapper" class="d-flex flex-column">
@@ -113,7 +114,7 @@
 
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                   <iframe width="100%" height="520" frameborder="0" src="https://coronavirusnearme.carto.com/builder/150c6797-9328-4509-beb6-f248204f0bcd/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe><!-- Earnings (Monthly) Card Example -->
+                                   <iframe width="100%" height="620" frameborder="0" src="https://coronavirusnearme.carto.com/builder/150c6797-9328-4509-beb6-f248204f0bcd/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe><!-- Earnings (Monthly) Card Example -->
                                 </div>
                                     <div class="d-block d-sm-none"><div class="alignleft">
      <script type="text/javascript">
@@ -133,25 +134,54 @@
      </script>
      <script src="https://z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
     </div>   </div><!-- Content Row -->
-                                <div id="chartdiv"></div>
+
                                         <!-- Area Chart -->
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <div class="card shadow mb-2">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h5 class="m-0 font-weight-bold text-primary">Time Series Top 20 Confirmed Countries</h5>
+                                                <h5 class="m-0 font-weight-bold text-primary">Time Series Countries</h5>
                                             </div><div class="row">
                                                 <button class="btn btn-success ml-3 mr-2 mb-2" onclick="addDataset(this)">Add Dataset</button>
                                                 <button class="btn btn-danger mb-2" onclick="removeDataset(this)">Remove Dataset</button>
+                                                <button class="btn btn-success ml-3 mr-2 mb-2" onclick="addatopDataset(this)">Add top 10 Countries</button>
+                                                <button class="btn btn-danger mb-2" onclick="removeallDataset(this)">Remove all Data</button>
                                             </div>
-
+                                            <div class="row">
                                             <form id="dropdown" class="col-md-4">
                                             </form>
+                                            <form id="dropdowntype" class="col-md-4">
+                                                <select id="dropdowntypeop" class="form-control select2">
+                                                    <option value="confirmed">Confirmed</option>
+                                                    <option value="deaths">Deaths</option>
+                                                    <option value="recovered">Recovered</option>
+
+
+                                                </select>
+                                            </form>
+                                                </div>
                                             <!-- Card Body -->
                                             <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                                 <div>
                                                     <div class="chart-area">
                                                         <canvas id="myChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="card shadow mb-2">
+                                            <!-- Card Header - Dropdown -->
+                                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                <h8 class="m-0 font-weight-bold text-primary">Time Series Change  </h8>
+                                            </div>
+                                            <!-- Card Body -->
+                                            <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                <div>
+                                                    <div class="chart-area">
+                                                        <canvas id="myChartchange"></canvas>
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,6 +201,7 @@
 
                                 <div class="copyright text-center my-auto">
                                     <span>Copyright &copy; CoronaVirustracker 2019</span>
+                                    <div class="mfes-trustmark" data-type="102" data-width="92" data-height="38"></div>
                                 </div>
                             </div>
                         </footer>
@@ -185,13 +216,16 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+<script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
 </body>
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/sb-admin-2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
 <script src="vendor/chart.js/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -213,29 +247,28 @@
 </script>
 
 
-<script>
+<script> 
+    var fdata = <%-timeseriesdata %> 
+    var recdata = <%-timeseriesrecovereddata %>
+    var deathdata = <%-timeseriesdeathdata %>
+    var options = [];
+    for (var i = 0; i < fdata.length; i++) {
+
+            options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')
+        
+    }
+
+    $('#dropdown').html('<select id="dropdownop"class="form-control select2">' + options.join('') + '</select>');
+    
     var ctx = document.getElementById("myChart").getContext('2d');
     ctx.canvas.parentNode.style.width = '100%'
-    var fdata = <%-timeseriesdata %>
-
-    var options = [];
-    for (var i = 0; i < fdata.length; i++)
-        if (fdata[i]['Province-State'] == "N/A") {
-            options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')
-        }
-        else { options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + " " + fdata[i]["Province-State"] + '</option>') }
-    $('#dropdown').html('<select id="dropdownop"class="form-control select2">' + options.join('') + '</select>');
-
-    var arrlabel = []
-    var arrlabels = []
-    var arrdata = []
-
+    var typec = 'linear';
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: Object.keys(fdata[0]['values'][0]),
             datasets: [{
-                label: (fdata)[0]["Country-Region"] + " " + fdata[0]["Province-State"],
+                label: (fdata)[0]["Country-Region"],
                 data: Object.values(fdata[0]['values'][0]),
                 pointBorderColor: "#6495ED",
                 borderColor: "#6495ED"
@@ -246,51 +279,217 @@
             maintainAspectRatio: false,
             scales: {
                 yAxes: [{
+                    type: typec,
+                    ticks: {
+                        beginAtZero: true}
+                }]
+            } , pan: {
+                enabled: true,
+                mode: 'xy',
+                speed: 50,
+                threshold: 10,
+            },
+            zoom: {
+                enabled: true,
+                drag: false,
+                mode: 'xy',
+                speed: 0.3,
+                rangeMin: { y: 0 },
+                limits: {
+                    max: 10,
+                    min: 0.5
+                },
+                sensitivity: 3,
+            }
+        }
+    });
+
+
+    var dropv = $('#dropdownop').val();
+    var dropv = $('#dropdowntypeop').val();
+    
+    console.log(dropv)
+    $("#dropdowntypeop").change(function () {
+        var dropv = $('#dropdowntypeop').val();
+
+        var labarr = []
+        for (i = 0; i < myChart.data.datasets.length; i++) { labarr.push(myChart.data.datasets[i].label) }
+        removeallDataset()
+        if (dropv == 'confirmed') { var typec = fdata }
+        else if (dropv == 'deaths') { var typec = deathdata }
+        else { var typec = recdata }
+        console.log(typec)
+        for (i = 0; i < fdata.length; i++) {
+            
+            if (labarr.includes(typec[i]["Country-Region"])) {
+                var colour = getRandomColor()
+                myChart.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['values'][0]),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                })
+                myChartchange.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['diff'][0]),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                })
+            }
+            myChart.update();
+            myChartchange.update();
+        }
+    });   
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+    function addDataset() {
+        var dropv = $('#dropdowntypeop').val();
+        var dropt = $('#dropdownop :selected').text()
+        var dropcoun = $('#dropdownop').val()
+        if (dropv == 'confirmed') { var typec = fdata }
+        else if (dropv == 'deaths') { var typec = deathdata }
+        else { var typec = recdata }
+        let colour = getRandomColor()
+        console.log(typec);
+            for (i = 0; i < myChart.data.datasets.length; i++) {
+                if (dropt == myChart.data.datasets[i].label) {
+                    return
+                }
+            }
+            myChart.data.datasets.push({
+                label: dropt,
+                data: Object.values(typec[dropcoun]['values'][0]),
+                pointBorderColor: colour,
+                borderColor: colour
+            })
+        myChartchange.data.datasets.push({
+            label: dropt,
+            data: Object.values(typec[dropcoun]['diff'][0]),
+            pointBorderColor: colour,
+            borderColor: colour
+        });
+        myChart.update();
+        myChartchange.update();
+        }
+    
+    function removeDataset() {
+        var dropt = $('#dropdownop :selected').text()
+
+        for (i = 0; i < myChart.data.datasets.length; i++) {
+            if (dropt == myChart.data.datasets[i].label) {
+
+                myChart.data.datasets.splice(i, 1)
+                myChartchange.data.datasets.splice(i, 1)
+            }
+        }
+        myChart.update();
+        myChartchange.update();
+    }
+    function removeallDataset() {
+        for (i = 0; i < myChart.data.datasets.length; i++) {
+
+            myChart.data.datasets.splice(i, 250)
+            myChartchange.data.datasets.splice(i, 250)
+        }
+        myChart.update();
+        myChartchange.update();
+        }
+    function addatopDataset() {
+        var dropv = $('#dropdowntypeop').val();
+        if (dropv == 'confirmed') { var typec = fdata }
+        else if (dropv == 'deaths') { var typec = deathdata }
+        else { var typec = recdata }
+        var topcountarr = []
+        var topcountries = <%-topcountriesconfirmed %>
+        for (var i = 0; i < topcountries.length; i++) {topcountarr.push(topcountries[i]['Country-Region'])}
+        var currentchart = []
+        console.log(dropv)
+        for (i = 0; i < myChart.data.datasets.length; i++) {currentchart.push(myChart.data.datasets[i].label)}
+        for (i = 0; i < fdata.length; i++) {
+
+                var colour = getRandomColor()
+            if (topcountarr.includes(fdata[i]["Country-Region"]) & !currentchart.includes(fdata[i]["Country-Region"])) {
+                myChart.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['values'][0]),
+                    pointBorderColor: colour,
+                    borderColor: colour
+
+                })
+                myChartchange.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['diff'][0]),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                })
+}
+            myChart.update();
+            myChartchange.update();
+            }
+        }
+    ;
+            
+
+    var ctxc = document.getElementById("myChartchange").getContext('2d');
+    ctxc.canvas.parentNode.style.width = '100%'
+    var myChartchange = new Chart(ctxc, {
+        type: 'line',
+        data: {
+            labels: Object.keys(fdata[0]['diff'][0]),
+            datasets: [{
+                label: (fdata)[0]["Country-Region"],
+                data: Object.values(fdata[0]['diff'][0]),
+                pointBorderColor: "#6495ED",
+                borderColor: "#6495ED"
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    type: 'linear',
                     ticks: {
                         beginAtZero: true
                     }
                 }]
             }
+            , pan: {
+                // Boolean to enable panning
+                enabled: true,
+                mode: 'xy',
+                speed: 50,
+                threshold: 10,
+            },
+            zoom: {
+                enabled: true,
+                drag: false,
+                mode: 'xy',
+                speed: 0.2,
+                rangeMin: { y: 0 },
+                limits: {
+                    max: 10,
+                    min: 0.5
+                },
+                // On category scale, minimal zoom level before actually applying zoom
+                sensitivity: 3,
+            }
         }
     });
-    function addDataset() {
-        var colors = ["red", "#7CFC00", "green", "#00FFFF", "#EE82EE", "#e755ba", "#8B008B", "#DAA520", "#D2691E", "#800000", "#FF1493", "#8A2BE2", "#4169E1", "#00BFFF", "#008080", "#00CED1", "#808000"]
-        var dropv = $('#dropdownop').val();
-        var dropt = $('#dropdownop :selected').text()
 
 
-        if (myChart.data.datasets.length < 19) {
-            for (i = 0; i < myChart.data.datasets.length; i++) {
-                if (dropt == myChart.data.datasets[i].label) {
 
-                    return
-                }
 
-            }
-            myChart.data.datasets.push({
-                label: dropt,
-                data: Object.values(fdata[dropv]['values'][0]),
-                pointBorderColor: colors[i],
-                borderColor: colors[i]
-            });
-            myChart.update();
-        }
-    }
-    function removeDataset() {
-        var dropv = $('#dropdownop').val();
-        var dropt = $('#dropdownop :selected').text()
 
-        for (i = 0; i < myChart.data.datasets.length; i++) {
-            if (dropt == myChart.data.datasets[i].label) {
-                console.log(dropt)
-                myChart.data.datasets.splice(i, 1)
 
-            }
-
-        }
-
-        myChart.update();
-    }
 
 </script>
 
@@ -367,5 +566,11 @@
 
     getLocation()
 </script>
+<script>
+    
+    $(document).ready(function () {
+            $('#audiblead').css("position", 'fixed');
 
+        })
+    </script>
 </html>
