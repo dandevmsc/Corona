@@ -152,16 +152,21 @@
     </div>   </div><!-- Content Row -->
 
                                         <!-- Area Chart -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard">
                                         <div class="card shadow mb-2">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                 <h5 class="m-0 font-weight-bold text-primary">Time Series Countries</h5>
                                             </div><div class="row">
-                                                <button class="btn btn-success ml-3 mr-2 mb-2" onclick="addDataset(this)">Add Dataset</button>
-                                                <button class="btn btn-danger mb-2" onclick="removeDataset(this)">Remove Dataset</button>
-                                                <button class="d-none d-sm-block btn btn-success ml-3 mr-2 mb-2" onclick="addatopDataset(this)">Add top 10 Countries</button>
-                                                <button class="btn btn-danger ml-3 mb-2" onclick="removeallDataset(this)">Remove all Data</button>
+                                                <button class="btn btn-success ml-2 mr-2 mb-2" onclick="addDataset(this)">Add Dataset</button>
+                                                <button class="btn btn-danger mb-2 mr-2" onclick="removeDataset(this)">Remove Dataset</button>
+                                                <button class="d-none d-md-block btn btn-success  mb-2" onclick="addatopDataset(this)">Add top 10 Countries</button>
+                                                <button class="btn btn-danger ml-2 mb-2" onclick="removeallDataset(this)">Remove all Data</button>
+                                            <div id="radioBtn" class="btn-group ml-2 mb-2 d-none d-sm-block">
+    				                        	<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="Y">Week</a>
+    				                        	<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="N">Month</a>
+                                                <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="W">All</a>
+    				                        </div>
                                             </div>
                                             <div class="row">
                                             <form id="dropdown" class="col-md-4">
@@ -171,23 +176,20 @@
                                                     <option value="confirmed">Confirmed</option>
                                                     <option value="deaths">Deaths</option>
                                                     <option value="recovered">Recovered</option>
-
-
                                                 </select>
                                             </form>
                                                 </div>
                                             <!-- Card Body -->
                                             <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <div>
                                                     <div class="chart-area">
-                                                        <canvas id="myChart"></canvas>
+                                                        <canvas id="myChart" style="min-height:280px"></canvas>
                                                     </div>
-                                                </div>
+
                                             </div>
                                         </div>
 
                                     </div>
-                                                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard">
                                         <div class="card shadow mb-2">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -195,11 +197,10 @@
                                             </div>
                                             <!-- Card Body -->
                                             <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                <div>
                                                     <div class="chart-area">
-                                                        <canvas id="myChartchange"></canvas>
+                                                        <canvas id="myChartchange" style="min-height:280px"></canvas>
                                                     </div>
-                                                </div>
+
                                             </div>
                                         </div>
 
@@ -213,7 +214,10 @@
                                     Sources:
                                     <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins University</a>,
                                     <a href="https://www.gov.uk/government/publications/covid-19-track-coronavirus-cases">Public Health England</a>
+                                    <a href="https://github.com/tomwhite/covid-19-uk-data">Public Health England (2),</a>
+                                    <a href="https://github.com/pcm-dpc/COVID-19">Italy Department of Civil Protection </a>
                                 </div>
+
 
                                 <div class="copyright text-center my-auto">
                                     <span>Copyright &copy; CoronaVirustracker 2019</span>
@@ -239,9 +243,9 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="js/sb-admin-2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+
 <script src="vendor/chart.js/Chart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -263,29 +267,51 @@
 </script>
 
 
-<script> 
+<script>
+    var topcountries = <%-topcountriesconfirmed %>
     var fdata = <%-timeseriesdata %> 
     var recdata = <%-timeseriesrecovereddata %>
     var deathdata = <%-timeseriesdeathdata %>
     var options = [];
+    var typed = -30
     for (var i = 0; i < fdata.length; i++) {
+            options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')  
+    }
+    $('#dropdown').html('<select id="dropdownop"class="form-control select2">' + options.join('') + '</select>');
 
-            options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')
-        
+
+    function textsizechart() {
+        var winWidth = $(window).width()
+        if (winWidth <= 599) {
+            var ctextsize = 8
+            var maxTicksLimit = 10 
+            var boxWidth = 5
+
+        }
+        else if (winWidth > 599 && winWidth < 1024) {
+            var ctextsize = 10
+            var maxTicksLimit = 20
+            var boxWidth = 1
+        }
+        else {var ctextsize = 12
+            var maxTicksLimit = 90
+            var boxWidth = 40
+        }
+        return [ctextsize, maxTicksLimit,boxWidth]
     }
 
-    $('#dropdown').html('<select id="dropdownop"class="form-control select2">' + options.join('') + '</select>');
-    
+    const [ctextsize, maxTicksLimit,boxWidth] =textsizechart()
+       console.log(boxWidth)
     var ctx = document.getElementById("myChart").getContext('2d');
     ctx.canvas.parentNode.style.width = '100%'
-    var typec = 'linear';
+
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: Object.keys(fdata[0]['values'][0]),
+            labels: Object.keys(fdata[0]['values'][0]).slice(typed),
             datasets: [{
                 label: (fdata)[0]["Country-Region"],
-                data: Object.values(fdata[0]['values'][0]),
+                data: Object.values(fdata[0]['values'][0]).slice(typed),
                 pointBorderColor: "#6495ED",
                 borderColor: "#6495ED"
             }]
@@ -293,111 +319,199 @@
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    fontSize: ctextsize,
+                    boxWidth: boxWidth
+                }
+            },
             scales: {
                 yAxes: [{
-                    type: typec,
+                    type: 'linear',
                     ticks: {
                         beginAtZero: true}
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontSize: ctextsize,
+                        maxTicksLimit: maxTicksLimit
+
+
+                    }
                 }]
-            } , pan: {
-                enabled: true,
-                mode: 'xy',
-                speed: 0.1,
-                threshold: 10,
+            } 
+
+        }
+    });
+    var ctxc = document.getElementById("myChartchange").getContext('2d');
+    ctxc.canvas.parentNode.style.width = '100%'
+    var myChartchange = new Chart(ctxc, {
+        type: 'line',
+        data: {
+            labels: Object.keys(fdata[0]['diff'][0]).slice(typed),
+            datasets: [{
+                label: (fdata)[0]["Country-Region"],
+                data: Object.values(fdata[0]['diff'][0]).slice(typed),
+                pointBorderColor: "#6495ED",
+                borderColor: "#6495ED"
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    fontSize: ctextsize,
+                    boxWidth: boxWidth
+                }
             },
-            zoom: {
-                enabled: true,
-                drag: false,
-                mode: 'xy',
-                speed: 0.1,
-                rangeMin: { y: 0 },
-                limits: {
-                    max: 10,
-                    min: 0.5
-                },
-                sensitivity: 3,
+        
+            scales: {
+                yAxes: [{
+                    type: 'linear',
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontSize: ctextsize,
+                        maxTicksLimit: maxTicksLimit
+
+                    }
+                }]
             }
+
+
         }
     });
 
 
+
     var dropv = $('#dropdownop').val();
     var dropv = $('#dropdowntypeop').val();
-    
-    console.log(dropv)
-    $("#dropdowntypeop").change(function () {
+    var sel = $('#radioBtn a').data('title')
+    var typec = fdata
+    function chartstatus() {
         var dropv = $('#dropdowntypeop').val();
-
-        var labarr = []
-        for (i = 0; i < myChart.data.datasets.length; i++) { labarr.push(myChart.data.datasets[i].label) }
-        removeallDataset()
+        var sel = $('#radioBtn > .active').data('title')
+        if (sel == "W") { var typed = -Object.keys(fdata[0]['values'][0]).length }
+        else if (sel == "Y") { var typed = -7 }
+        else if (sel == "N") {var typed=-30 }
+        
         if (dropv == 'confirmed') { var typec = fdata }
         else if (dropv == 'deaths') { var typec = deathdata }
         else { var typec = recdata }
-        console.log(typec)
+
+    return [typec,typed]}
+
+    function pushdata(typec,typed,colour) {
+                myChart.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['values'][0]).slice(typed),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                });
+                myChartchange.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['diff'][0]).slice(typed),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                })
+    }
+    function changelabels(typed) {
+        for (i = 0; i < Object.keys(fdata[0]['values'][0]).length; i++) {
+            myChart.data.labels.pop()
+            myChartchange.data.labels.pop()
+        }
+        for (var i = 0; i < -typed; i++) {
+            myChart.data.labels.push(Object.keys(fdata[0]['values'][0])[Object.keys(fdata[0]['values'][0]).length + typed + i])
+            myChartchange.data.labels.push(Object.keys(fdata[0]['values'][0])[Object.keys(fdata[0]['values'][0]).length + typed + i])
+        }
+    }
+    function changeinchart() {
+        const [typec, typed] = chartstatus();
+        //var typec=chartstatus[0],  typed=chartstatus[1]
+        let labarr = []
+        for (i = 0; i < myChart.data.datasets.length; i++) { labarr.push(myChart.data.datasets[i].label) }
+        removeallDataset()
         for (i = 0; i < fdata.length; i++) {
             
             if (labarr.includes(typec[i]["Country-Region"])) {
                 var colour = getRandomColor()
-                myChart.data.datasets.push({
-                    label: typec[i]["Country-Region"],
-                    data: Object.values(typec[i]['values'][0]),
-                    pointBorderColor: colour,
-                    borderColor: colour
-                })
-                myChartchange.data.datasets.push({
-                    label: typec[i]["Country-Region"],
-                    data: Object.values(typec[i]['diff'][0]),
-                    pointBorderColor: colour,
-                    borderColor: colour
-                })
+                pushdata(typec,typed,colour)
             }
-            myChart.update();
-            myChartchange.update();
         }
-    });   
-
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
+        changelabels(typed)
+        myChart.update();
+        myChartchange.update();
+    };   
         
     function addDataset() {
-        var dropv = $('#dropdowntypeop').val();
-        var dropt = $('#dropdownop :selected').text()
-        var dropcoun = $('#dropdownop').val()
-        if (dropv == 'confirmed') { var typec = fdata }
-        else if (dropv == 'deaths') { var typec = deathdata }
-        else { var typec = recdata }
-        let colour = getRandomColor()
-        console.log(typec);
+        let dropt = $('#dropdownop :selected').text()
+        let dropcoun = $('#dropdownop').val()
+        const [typec, typed] = chartstatus();
+
             for (i = 0; i < myChart.data.datasets.length; i++) {
                 if (dropt == myChart.data.datasets[i].label) {
+                    
                     return
                 }
             }
-            myChart.data.datasets.push({
-                label: dropt,
-                data: Object.values(typec[dropcoun]['values'][0]),
-                pointBorderColor: colour,
-                borderColor: colour
-            })
-        myChartchange.data.datasets.push({
-            label: dropt,
-            data: Object.values(typec[dropcoun]['diff'][0]),
-            pointBorderColor: colour,
-            borderColor: colour
-        });
+                var colour = getRandomColor()
+                myChart.data.datasets.push({
+                    label: dropt,
+                    data: Object.values(typec[dropcoun]['values'][0]).slice(typed),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                });
+                myChartchange.data.datasets.push({
+                    label: dropt,
+                    data: Object.values(typec[dropcoun]['diff'][0]).slice(typed),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                })
+                
+
+        
+        changelabels(typed)
         myChart.update();
         myChartchange.update();
         }
     
+
+    function addatopDataset() {
+        const [typec, typed] = chartstatus();
+
+        let topcountarr = []
+        for (var i = 0; i < topcountries.length; i++) {topcountarr.push(topcountries[i]['Country-Region'])}
+        let currentchart = []
+        console.log(topcountries)
+        for (i = 0; i < myChart.data.datasets.length; i++) {currentchart.push(myChart.data.datasets[i].label)}
+        for (i = 0; i < fdata.length; i++) {
+            if (topcountarr.includes(fdata[i]["Country-Region"]) & !currentchart.includes(fdata[i]["Country-Region"])) {
+                var colour = getRandomColor()
+                myChart.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['values'][0]).slice(typed),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                });
+                myChartchange.data.datasets.push({
+                    label: typec[i]["Country-Region"],
+                    data: Object.values(typec[i]['diff'][0]).slice(typed),
+                    pointBorderColor: colour,
+                    borderColor: colour
+                })
+            } 
+            changelabels(typed)
+            myChart.update();
+            myChartchange.update();
+        }
+    ;}
+
     function removeDataset() {
-        var dropt = $('#dropdownop :selected').text()
+        let dropt = $('#dropdownop :selected').text()
 
         for (i = 0; i < myChart.data.datasets.length; i++) {
             if (dropt == myChart.data.datasets[i].label) {
@@ -418,169 +532,29 @@
         myChart.update();
         myChartchange.update();
         }
-    function addatopDataset() {
-        var dropv = $('#dropdowntypeop').val();
-        if (dropv == 'confirmed') { var typec = fdata }
-        else if (dropv == 'deaths') { var typec = deathdata }
-        else { var typec = recdata }
-        var topcountarr = []
-        var topcountries = <%-topcountriesconfirmed %>
-        for (var i = 0; i < topcountries.length; i++) {topcountarr.push(topcountries[i]['Country-Region'])}
-        var currentchart = []
-        console.log(dropv)
-        for (i = 0; i < myChart.data.datasets.length; i++) {currentchart.push(myChart.data.datasets[i].label)}
-        for (i = 0; i < fdata.length; i++) {
-
-                var colour = getRandomColor()
-            if (topcountarr.includes(fdata[i]["Country-Region"]) & !currentchart.includes(fdata[i]["Country-Region"])) {
-                myChart.data.datasets.push({
-                    label: typec[i]["Country-Region"],
-                    data: Object.values(typec[i]['values'][0]),
-                    pointBorderColor: colour,
-                    borderColor: colour
-
-                })
-                myChartchange.data.datasets.push({
-                    label: typec[i]["Country-Region"],
-                    data: Object.values(typec[i]['diff'][0]),
-                    pointBorderColor: colour,
-                    borderColor: colour
-                })
-}
-            myChart.update();
-            myChartchange.update();
-            }
+    function getRandomColor() {
+        let letters = '0123456789ABCDEF';
+        let color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
         }
-    ;
-            
-
-    var ctxc = document.getElementById("myChartchange").getContext('2d');
-    ctxc.canvas.parentNode.style.width = '100%'
-    var myChartchange = new Chart(ctxc, {
-        type: 'line',
-        data: {
-            labels: Object.keys(fdata[0]['diff'][0]),
-            datasets: [{
-                label: (fdata)[0]["Country-Region"],
-                data: Object.values(fdata[0]['diff'][0]),
-                pointBorderColor: "#6495ED",
-                borderColor: "#6495ED"
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                yAxes: [{
-                    type: 'linear',
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-            , pan: {
-                // Boolean to enable panning
-                enabled: true,
-                mode: 'xy',
-                speed: 0.1,
-                threshold: 10,
-            },
-            zoom: {
-                enabled: true,
-                drag: false,
-                mode: 'xy',
-                speed: 0.1,
-                rangeMin: { y: 0 },
-                limits: {
-                    max: 10,
-                    min: 0.5
-                },
-                // On category scale, minimal zoom level before actually applying zoom
-                sensitivity: 3,
-            }
-        }
-    });
+        return color;
+    }
 
 
 
+    $("#dropdowntypeop").change(function () { changeinchart() })
+    $('#radioBtn a').on('click', function () {
+        let sel = $(this).data('title');
+        let tog = $(this).data('toggle');
+        $('#' + tog).prop('value', sel);
 
-
-
+        $('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+        $('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+        changeinchart()
+    })
 
 </script>
-
-
-<script>
-    var x = document.getElementById("locdatadiv");
-
-    function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-        var R = 6371; // Radius of the earth in km
-        var dLat = deg2rad(lat2 - lat1);  // deg2rad below
-        var dLon = deg2rad(lon2 - lon1);
-        var a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2)
-            ;
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c; // Distance in km
-
-        return d;
-    }
-
-
-    function deg2rad(deg) {
-        return deg * (Math.PI / 180)
-    }
-
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
-    function showPosition(position) {
-
-        var locdatai = <%-locdata %>;
-
-        var ar = []
-
-        for (i = 0; i < locdatai.length; i++) {
-            ar.push(getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, locdatai[i]['Lat'], locdatai[i]['Long-']))
-
-        }
-     
-        var j = ar.indexOf(Math.min(...ar));
-    
-
-        var lati = position.coords.latitude;
-        var longi = position.coords.longitude;
-        x.innerHTML = "Your Location: " + locdatai[j]['Combined-Key'] + ", Confirmed: " + locdatai[j]['Confirmed'] + ", Deaths: " + locdatai[j]['Deaths'] + ", Recovered: " + locdatai[j]['Recovered'] + ", Active: " + locdatai[j]['Active']
-    }
-
-    function showError(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                x.innerHTML = "User denied the request for Geolocation."
-                break;
-            case error.POSITION_UNAVAILABLE:
-                x.innerHTML = "Location information is unavailable."
-                break;
-            case error.TIMEOUT:
-                x.innerHTML = "The request to get user location timed out."
-                break;
-            case error.UNKNOWN_ERROR:
-                x.innerHTML = "An unknown error occurred."
-                break;
-        }
-    }
-
-
-
-
-    getLocation()
-</script>
-
+<script>var locdatai = <%-locdata %>;</script>
+<script src="js/location.js"></script>
 </html>

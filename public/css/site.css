@@ -25,11 +25,16 @@
     color: goldenrod !important;
 }
 
-
+#radioBtn .notActive {
+    color: #3276b1;
+    background-color: #fff;
+}
 
 
 @media (min-width: 1025px) {
-
+    #chartcard {
+        min-height: 500px !important;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -40,6 +45,9 @@
     #titlepage {
         font-size: 20px !important
     }
+    #chartcard {
+        min-height: 500px !important;
+    }
     html{
         font-size:14px !important;
     }
@@ -48,14 +56,20 @@
     #locdatadiv {
         font-size: 14px !important;
     }
-
+    #chartcard {
+        min-height: 500px;
+    }
     #titlepage {
         font-size: 18px !important
     }
+
 }
 @media (max-width: 599px) {
     #locdatadiv {
         font-size: 14px !important;
+    }    
+    #chartcard{
+        min-height:500px;
     }
 
     #titlepage {
