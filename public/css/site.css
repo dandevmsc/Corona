@@ -59,6 +59,9 @@
     #chartcard {
         min-height: 500px;
     }
+    #chartcardsha {
+        min-height: 500px;
+    }
     #titlepage {
         font-size: 18px !important
     }
@@ -70,6 +73,9 @@
     }    
     #chartcard{
         min-height:500px;
+    }
+    #chartcardsha {
+        min-height: 500px;
     }
 
     #titlepage {
