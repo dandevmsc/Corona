@@ -17,16 +17,8 @@ require('./models');
 
 var dotenv = require('dotenv');
 dotenv.config();
-
-
-
-const dbname = 'coronadb';
-const collname = 'Deaths';
 //var coro = mongoose.model('Deaths')
-
 var url = 'mongodb://' + process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + '@145.14.157.129/coronadb';
-//var url = 'mongodb://localhost:27017/coronadb';
-
 
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(url);
@@ -78,12 +70,12 @@ app.get('/', function (req, res, next) {
             res.render('index', {
                 title: 'Line chart',
            
-                summary_recovered  :summary_recovered ,
-                summary_change_rec :summary_change_rec,
-                summary_deaths     :summary_deaths    ,
-                summary_change_de  :summary_change_de ,
-                summary_confirmed  :summary_confirmed ,
-                summary_change_con :summary_change_con,
+                summary_recovered: summary_recovered.toLocaleString() ,
+                summary_change_rec: summary_change_rec.toLocaleString(),
+                summary_deaths: summary_deaths.toLocaleString()    ,
+                summary_change_de: summary_change_de.toLocaleString() ,
+                summary_confirmed: summary_confirmed.toLocaleString() ,
+                summary_change_con: summary_change_con.toLocaleString(),
                 locdata            :JSON.stringify(locdata),
                 timeseriesdata: JSON.stringify(timeseriesdata),
                 topcountriesconfirmed: JSON.stringify(topcountriesconfirmed),

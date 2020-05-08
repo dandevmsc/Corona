@@ -35,6 +35,9 @@
     #chartcard {
         min-height: 500px !important;
     }
+    #chartcard2 {
+        min-height: 450px !important;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -47,6 +50,9 @@
     }
     #chartcard {
         min-height: 500px !important;
+    }
+    #chartcard2 {
+        min-height: 450px !important;
     }
     html{
         font-size:14px !important;
@@ -62,6 +68,12 @@
     #chartcardsha {
         min-height: 500px;
     }
+    #chartcard2 {
+        min-height: 450px;
+    }
+    #chartcardsha2 {
+        min-height: 450px;
+    }
     #titlepage {
         font-size: 18px !important
     }
@@ -74,9 +86,17 @@
     #chartcard{
         min-height:500px;
     }
-    #chartcardsha {
+    #chartcard2 {
         min-height: 500px;
     }
+    #chartcardsha {
+        min-height: 450px;
+    }
+    #chartcardsha2 {
+        min-height: 450px;
+    }
+
+
 
     #titlepage {
         font-size: 18px !important

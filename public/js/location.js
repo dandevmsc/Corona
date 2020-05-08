@@ -34,7 +34,7 @@ function showPosition(position) {
         ar.push(getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, locdatai[i]['Lat'], locdatai[i]['Long-']))
     }
     var j = ar.indexOf(Math.min(...ar));
-    x.innerHTML = "Your Location: " + locdatai[j]['Combined-Key'] + ", Confirmed: " + locdatai[j]['Confirmed'] + ", Deaths: " + locdatai[j]['Deaths'] + ", Recovered: " + locdatai[j]['Recovered'] + ", Active: " + locdatai[j]['Active']
+    x.innerHTML = "Your Location: " + locdatai[j]['Combined-Key'] + " Confirmed: " + locdatai[j]['Confirmed'].toLocaleString() + "; Deaths: " + locdatai[j]['Deaths'].toLocaleString() + "; Recovered: " + locdatai[j]['Recovered'].toLocaleString() + "; Active: " + locdatai[j]['Active'].toLocaleString()
 }
 
 function showError(error) {

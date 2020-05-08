@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="css/site.css" />
 
     <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+
     </head>
 <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
 <body id="page-top">
@@ -156,7 +158,7 @@
                                         <div class="card shadow mb-2" id="chartcardsha">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h5 class="m-0 font-weight-bold text-primary">Time Series Total</h5>
+                                                <h5 class="m-0 font-weight-bold text-primary"> Total Per Country</h5>
                                             </div><div class="row">
                                                 <button class="btn btn-success ml-3 mr-2 mb-2" onclick="addDataset(this)">Add Dataset</button>
                                                 <button class="btn btn-danger mb-2 mr-2" onclick="removeDataset(this)">Remove Dataset</button>
@@ -189,8 +191,8 @@
                                         </div>
 
                                     </div>
-                                      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard">
-                                        <div class="card shadow mb-2" id="chartcardsha">
+                                      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard2">
+                                        <div class="card shadow mb-2" id="chartcardsha2">
                                             <!-- Card Header - Dropdown -->
                                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                 <h8 class="m-0 font-weight-bold text-primary"> Daily Change  </h8>
@@ -205,6 +207,31 @@
                                         </div>
 
                                     </div>
+<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="card shadow mb-2">
+    <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 ">
+                                <table id="coronadata" class="display" style="width:100%">
+                                    
+
+  <thead>
+    <tr>
+        <th scope="col" data-field="Country" data-sortable="true">Country</th>
+        <th scope="col" data-field="Confirmed" data-sortable="true">Confirmed</th>
+        <th scope="col" data-field="New Cases" data-sortable="true">New Cases (24hr) </th>
+        <th scope="col" data-field="Deaths" data-sortable="true">Deaths</th>
+        <th scope="col" data-field="New Deaths" data-sortable="true">New Deaths (24hr)</th>
+        <th scope="col" data-field="Recovered" data-sortable="true">Recovered</th>
+        <th scope="col" data-field="New Recoveries" data-sortable="true">New Recoveries (24hr)</th>
+        <th scope="col" data-field="Active Cases" data-sortable="true">Active Cases</th>
+        <th scope="col" data-field="New Active Cases" data-sortable="true">New Active Cases (24hr)</th>
+    </tr>
+  </thead>
+
+                                    </table>
+        </div>
+    </div>
+                                </div>
+
                                 </div>
                             </div>
                         </div>
@@ -248,12 +275,13 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script data-ad-client="ca-pub-5150312524686196" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"/>
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 <script src="js/cookies.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 
 
@@ -278,7 +306,9 @@
             options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')  
     }
     $('#dropdown').html('<select id="dropdownop"class="form-control select2">' + options.join('') + '</select>');
-
+    console.log(fdata)
+    console.log(recdata)
+    console.log(deathdata)
 
     function textsizechart() {
         var winWidth = $(window).width()
@@ -308,10 +338,10 @@
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: Object.keys(fdata[0]['values'][0]).slice(typed),
+            labels: Object.keys(fdata[173]['values'][0]).slice(typed),
             datasets: [{
-                label: (fdata)[0]["Country-Region"],
-                data: Object.values(fdata[0]['values'][0]).slice(typed),
+                label: (fdata)[173]["Country-Region"],
+                data: Object.values(fdata[173]['values'][0]).slice(typed),
                 pointBorderColor: "#6495ED",
                 borderColor: "#6495ED"
             }]
@@ -348,10 +378,10 @@
     var myChartchange = new Chart(ctxc, {
         type: 'line',
         data: {
-            labels: Object.keys(fdata[0]['diff'][0]).slice(typed),
+            labels: Object.keys(fdata[173]['diff'][0]).slice(typed),
             datasets: [{
-                label: (fdata)[0]["Country-Region"],
-                data: Object.values(fdata[0]['diff'][0]).slice(typed),
+                label: (fdata)[173]["Country-Region"],
+                data: Object.values(fdata[173]['diff'][0]).slice(typed),
                 pointBorderColor: "#6495ED",
                 borderColor: "#6495ED"
             }]
@@ -557,4 +587,5 @@
 </script>
 <script>var locdatai = <%-locdata %>;</script>
 <script src="js/location.js"></script>
+<script src="js/table.js"></script>
 </html>
