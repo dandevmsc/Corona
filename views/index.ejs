@@ -291,9 +291,7 @@
             options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')  
     }
     $('#dropdown').html('<select id="dropdownop"class="form-control select2">' + options.join('') + '</select>');
-    console.log(fdata)
-    console.log(recdata)
-    console.log(deathdata)
+
 
     function textsizechart() {
         var winWidth = $(window).width()
@@ -344,6 +342,7 @@
                 yAxes: [{
                     type: 'linear',
                     ticks: {
+                        fontSize: ctextsize,
                         beginAtZero: true}
                 }],
                 xAxes: [{
@@ -385,6 +384,7 @@
                 yAxes: [{
                     type: 'linear',
                     ticks: {
+                        fontSize: ctextsize,
                         beginAtZero: true
                     }
                 }],
