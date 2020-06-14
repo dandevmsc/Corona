@@ -14,257 +14,230 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site.css" />
 
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 
-    </head>
+</head>
 <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <div class="d-none d-sm-block">
-            <ul class="navbar-nav   sidebar"  id="accordionSidebar">
-            <div class="alignleft" id="audiblead">
-     <script type="text/javascript">
-         amzn_assoc_ad_type = "banner";
-         amzn_assoc_marketplace = "amazon";
-         amzn_assoc_region = "US";
-         amzn_assoc_placement = "assoc_banner_placement_default";
-         amzn_assoc_campaigns = "prime_up";
-         amzn_assoc_banner_type = "category";
-         amzn_assoc_p = "29";
-         amzn_assoc_isresponsive = "false";
-         amzn_assoc_banner_id = "10938TRC5R4JSVN4KN02";
-         amzn_assoc_width = "120";
-         amzn_assoc_height = "600";
-         amzn_assoc_tracking_id = "tradermaths-20";
-         amzn_assoc_linkid = "a1e9f4ec3d22db98a09a18f64f366cd4";
-     </script>
-     <script  src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
-    </div></ul>
-                </div>
         <!-- End of Sidebar -->
 
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <div class="container-fluid">
-                    <div class="d-sm-flex  align-items-center justify-content-center mb-6">
-                        <div class="d-flex p-2 align-items-center  h1 mb-1 mt-2 text-gray-800 font-weight-bold" id="titlepage">Corona Virus Near Me</div>
+                <nav class="navbar navbar-light" style="background-color: #fff;">
+
+                    <div class="card-body d-flex h1 p-2 align-items-center justify-content-center text-gray-800 font-weight-bold">
+                        <a id="titlepage">Corona Virus Near Me</a>
                     </div>
-                    <!-- Content Row -->
-                    <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-4 col-md-4 mb-2">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body align-items-center d-flex justify-content-center">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Global Confirmed Cases</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <%- summary_confirmed %>
-                                                <i id="confirmedfasfa-angle" class="fas fa-angle-double-up">  </i> <%- summary_change_con %>
-                                                <small>(Today)</small>
-                                            </div>
+
+                </nav>
+
+                <div class="row align-items-center justify-content-center" style="background-color: #fff;">
+                    <a class=" h3 font-weight-bold text-primary mr-4" href="/vaccine">Track the Vaccine</a>
+                    <!--a class=" h3 font-weight-bold text-primary" href="/mobility">Track Mobility</!--a>-->
+                </div>
+
+
+                <!-- Content Row -->
+                <div class="row">
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-4 col-md-4 mb-2">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body align-items-center d-flex justify-content-center">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Global Confirmed Cases</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <%- summary_confirmed %>
+                                            <i id="confirmedfasfa-angle" class="fas fa-angle-double-up">  </i> <%- summary_change_con %>
+                                            <small>(Today)</small>
                                         </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-4 col-md-4 mb-2">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body align-items-center d-flex justify-content-center">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Global Deaths</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <%- summary_deaths %>
-                                                <i class="fas fa-angle-double-up"></i>  <%- summary_change_de %>
-                                                <small>(Today)</small>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="col-xl-4 col-md-4 col-mb-4 col-l-4 mb-2">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body align-items-center d-flex justify-content-center">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-auto">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Global Recovered</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <%- summary_recovered %>
-                                                <i id="recoveredfasfa-angle" class="fas fa-angle-double-up">  </i> <%- summary_change_rec %>
-                                                <small>(Today)</small>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-md-12 col-mb-12 col-l-12 mb-2">
-                            <div class="card  shadow h-100 py-2">
-                                <div class="card-body align-items-center d-flex justify-content-center">
-                                    <div class="row no-gutters align-items-center ml-1 mr-1">
-                                        <h4 class="m-0 font-weight-bold text-primary ml-6 mr-6" id="locdatadiv"></h4>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-xl-12 col-lg-12 col-sm-12 col-md-12">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h4 class="m-0 font-weight-bold text-primary">Map</h4>
-                                    <div class="dropdown no-arrow">
-                                    </div>
-                                </div>
-
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                   <iframe width="100%" height="620" frameborder="0" src="https://coronavirusnearme.carto.com/builder/150c6797-9328-4509-beb6-f248204f0bcd/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe><!-- Earnings (Monthly) Card Example -->
-                                </div>
-                                    <div class="d-block d-sm-none"><div class="alignleft">
-     <script type="text/javascript">
-         amzn_assoc_ad_type = "banner";
-         amzn_assoc_marketplace = "amazon";
-         amzn_assoc_region = "US";
-         amzn_assoc_placement = "assoc_banner_placement_default";
-         amzn_assoc_campaigns = "primediscounted";
-         amzn_assoc_banner_type = "category";
-         amzn_assoc_p = "12";
-         amzn_assoc_isresponsive = "false";
-         amzn_assoc_banner_id = "0B1ZM2WXBW6G511AGG02";
-         amzn_assoc_width = "300";
-         amzn_assoc_height = "250";
-         amzn_assoc_tracking_id = "tradermaths-20";
-         amzn_assoc_linkid = "87629d80a061b9f198112bcffb42c653";
-     </script>
-     <script src="https://z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
-    </div>   </div><!-- Content Row -->
-
-                                        <!-- Area Chart -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard">
-                                        <div class="card shadow mb-2" id="chartcardsha">
-                                            <!-- Card Header - Dropdown -->
-                                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h5 class="m-0 font-weight-bold text-primary"> Total Per Country</h5>
-                                            </div><div class="row">
-                                                <button class="btn btn-success ml-3 mr-2 mb-2" onclick="addDataset(this)">Add Dataset</button>
-                                                <button class="btn btn-danger mb-2 mr-2" onclick="removeDataset(this)">Remove Dataset</button>
-                                                <button class="d-none d-md-block btn btn-success  mb-2" onclick="addatopDataset(this)">Add top 10 Countries</button>
-                                                <button class="btn btn-danger ml-3 mb-2" onclick="removeallDataset(this)">Remove all Data</button>
-                                            <div id="radioBtn" class="btn-group ml-2 mb-2 d-none d-sm-block">
-    				                        	<a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="Y">Week</a>
-    				                        	<a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="N">Month</a>
-                                                <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="W">All</a>
-    				                        </div>
-                                            </div>
-                                            <div class="row">
-                                            <form id="dropdown" class="col-md-4">
-                                            </form>
-                                            <form id="dropdowntype" class="col-md-4">
-                                                <select id="dropdowntypeop" class="form-control select2">
-                                                    <option value="confirmed">Confirmed</option>
-                                                    <option value="deaths">Deaths</option>
-                                                    <option value="recovered">Recovered</option>
-                                                </select>
-                                            </form>
-                                                </div>
-                                            <!-- Card Body -->
-                                            <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <div class="chart-area">
-                                                        <canvas id="myChart" style="min-height:280px"></canvas>
-                                                    </div>
-
-                                            </div>
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-4 col-md-4 mb-2">
+                        <div class="card border-left-danger shadow h-100 py-2">
+                            <div class="card-body align-items-center d-flex justify-content-center">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Global Deaths</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <%- summary_deaths %>
+                                            <i class="fas fa-angle-double-up"></i>  <%- summary_change_de %>
+                                            <small>(Today)</small>
                                         </div>
-
                                     </div>
-                                      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard2">
-                                        <div class="card shadow mb-2" id="chartcardsha2">
-                                            <!-- Card Header - Dropdown -->
-                                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                                <h8 class="m-0 font-weight-bold text-primary"> Daily Change  </h8>
-                                            </div>
-                                            <!-- Card Body -->
-                                            <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                    <div class="chart-area">
-                                                        <canvas id="myChartchange" style="min-height:280px"></canvas>
-                                                    </div>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-    <div class="card shadow mb-2">
-    <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 ">
-                                <table id="coronadata" class="display" style="width:100%">
-                                    
-
-  <thead>
-    <tr>
-        <th scope="col" data-field="Country" data-sortable="true">Country</th>
-        <th scope="col" data-field="Confirmed" data-sortable="true">Confirmed</th>
-        <th scope="col" data-field="New Cases" data-sortable="true">New Cases (24hr) </th>
-        <th scope="col" data-field="Deaths" data-sortable="true">Deaths</th>
-        <th scope="col" data-field="New Deaths" data-sortable="true">New Deaths (24hr)</th>
-        <th scope="col" data-field="Recovered" data-sortable="true">Recovered</th>
-        <th scope="col" data-field="New Recoveries" data-sortable="true">New Recoveries (24hr)</th>
-        <th scope="col" data-field="Active Cases" data-sortable="true">Active Cases</th>
-        <th scope="col" data-field="New Active Cases" data-sortable="true">New Active Cases (24hr)</th>
-    </tr>
-  </thead>
-
-                                    </table>
-        </div>
-    </div>
-                                </div>
 
                                 </div>
                             </div>
                         </div>
-                        <footer class="sticky-footer bg-white">
-                            <div class="container my-auto">
-                                <div>
-                                    Sources:
-                                    <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins University</a>,
-                                    <a href="https://www.gov.uk/government/publications/covid-19-track-coronavirus-cases">Public Health England</a>
-                                    <a href="https://github.com/tomwhite/covid-19-uk-data">Public Health England (2),</a>
-                                    <a href="https://github.com/pcm-dpc/COVID-19">Italy Department of Civil Protection </a>
-                                </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-mb-4 col-l-4 mb-2">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body align-items-center d-flex justify-content-center">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-auto">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Global Recovered</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <%- summary_recovered %>
+                                            <i id="recoveredfasfa-angle" class="fas fa-angle-double-up">  </i> <%- summary_change_rec %>
+                                            <small>(Today)</small>
+                                        </div>
+                                    </div>
 
-
-                                <div class="copyright text-center my-auto">
-                                    <span>Copyright &copy; CoronaVirustracker 2019</span>
-                                    <div class="mfes-trustmark" data-type="102" data-width="92" data-height="38"></div>
                                 </div>
                             </div>
-                        </footer>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-12 col-mb-12 col-l-12 mb-2">
+                        <div class="card  shadow h-100 py-2">
+                            <div class="card-body align-items-center d-flex justify-content-center">
+                                <div class="row no-gutters align-items-center ml-1 mr-1">
+                                    <h4 class="m-0 font-weight-bold text-primary ml-6 mr-6" id="locdatadiv"></h4>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-sm-12 col-md-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h4 class="m-0 font-weight-bold text-primary">Map</h4>
+                                <div class="dropdown no-arrow">
+                                </div>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <iframe width="100%" height="620" frameborder="0" src="https://coronavirusnearme.carto.com/builder/150c6797-9328-4509-beb6-f248204f0bcd/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe><!-- Earnings (Monthly) Card Example -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- Content Row -->
+                <!-- Area Chart -->
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard">
+                    <div class="card shadow mb-2" id="chartcardsha">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h5 class="m-0 font-weight-bold text-primary"> Total Per Country</h5>
+                        </div><div class="row">
+                            <button class="btn btn-success ml-3 mr-2 mb-2" onclick="addDataset(this)">Add Dataset</button>
+                            <button class="btn btn-danger mb-2 mr-2" onclick="removeDataset(this)">Remove Dataset</button>
+                            <button class="d-none d-md-block btn btn-success  mb-2" onclick="addatopDataset(this)">Add top 10 Countries</button>
+                            <button class="btn btn-danger ml-3 mb-2" onclick="removeallDataset(this)">Remove all Data</button>
+                            <div id="radioBtn" class="btn-group ml-2 mb-2 d-none d-sm-block">
+                                <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="Y">Week</a>
+                                <a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="N">Month</a>
+                                <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="W">All</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <form id="dropdown" class="col-md-4">
+                            </form>
+                            <form id="dropdowntype" class="col-md-4">
+                                <select id="dropdowntypeop" class="form-control select2">
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="deaths">Deaths</option>
+                                    <option value="recovered">Recovered</option>
+                                </select>
+                            </form>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="chart-area">
+                                <canvas id="myChart" style="min-height:280px"></canvas>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
-            </div>
-        </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" id="chartcard2">
+                    <div class="card shadow mb-2" id="chartcardsha2">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h8 class="m-0 font-weight-bold text-primary"> Daily Change  </h8>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="chart-area">
+                                <canvas id="myChartchange" style="min-height:280px"></canvas>
+                            </div>
 
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="card shadow mb-2">
+                        <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2 ">
+                            <table id="coronadata" class="display" style="width:100%">
+
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col" data-field="Country" data-sortable="true">Country</th>
+                                        <th scope="col" data-field="Confirmed" data-sortable="true">Confirmed</th>
+                                        <th scope="col" data-field="New Cases" data-sortable="true">New Cases (24hr) </th>
+                                        <th scope="col" data-field="Deaths" data-sortable="true">Deaths</th>
+                                        <th scope="col" data-field="New Deaths" data-sortable="true">New Deaths (24hr)</th>
+                                        <th scope="col" data-field="Recovered" data-sortable="true">Recovered</th>
+                                        <th scope="col" data-field="New Recoveries" data-sortable="true">New Recoveries (24hr)</th>
+                                        <th scope="col" data-field="Active Cases" data-sortable="true">Active Cases</th>
+                                        <th scope="col" data-field="New Active Cases" data-sortable="true">New Active Cases (24hr)</th>
+                                    </tr>
+                                </thead>
+
+                            </table>* UK & The Netherlands & Spain do not report recovery data.
+                        </div>
+                    </div>
+                </div>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div>
+                            Sources:
+                            <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins University</a>,
+                            <a href="https://www.gov.uk/government/publications/covid-19-track-coronavirus-cases">Public Health England</a>
+                            <a href="https://github.com/tomwhite/covid-19-uk-data">Public Health England (2),</a>
+                            <a href="https://github.com/pcm-dpc/COVID-19">Italy Department of Civil Protection </a>
+                        </div>
+
+
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; CoronaVirustracker 2019</span>
+                            <div class="mfes-trustmark" data-type="102" data-width="92" data-height="38"></div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+
+        </div>
+    </div>
+  
+
+    <script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="coronavirusme" data-description="Support me on Buy me a coffee!" data-message="If you think the content is useful, buy me a Coffee!" data-color="#5F7FFF" data-position="right" data-x_margin="18" data-y_margin="18"></script>
 
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-<script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
+    <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
 </body>
+
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -277,18 +250,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
-<script>var locdatai = <%-locdata %>;</script>
+<script>var locdatai = <%- locdata %>;</script>
 <script src="js/location.min.js"></script>
 
 <script>
-    var topcountries = <%-topcountriesconfirmed %>
-    var fdata = <%-timeseriesdata %> 
-    var recdata = <%-timeseriesrecovereddata %>
-    var deathdata = <%-timeseriesdeathdata %>
+    var topcountries = <%- topcountriesconfirmed %>
+    var fdata = <%- timeseriesdata %>
+    var recdata = <%- timeseriesrecovereddata %>
+    var deathdata = <%- timeseriesdeathdata %>
     var options = [];
     var typed = -30
     for (var i = 0; i < fdata.length; i++) {
-            options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')  
+        options.push('<option value="' + i + '">' + (fdata)[i]["Country-Region"] + '</option>')
     }
     $('#dropdown').html('<select id="dropdownop"class="form-control select2">' + options.join('') + '</select>');
 
@@ -297,7 +270,7 @@
         var winWidth = $(window).width()
         if (winWidth <= 599) {
             var ctextsize = 6
-            var maxTicksLimit = 10 
+            var maxTicksLimit = 10
             var boxWidth = 5
 
         }
@@ -306,25 +279,26 @@
             var maxTicksLimit = 20
             var boxWidth = 1
         }
-        else {var ctextsize = 12
+        else {
+            var ctextsize = 12
             var maxTicksLimit = 90
             var boxWidth = 40
         }
-        return [ctextsize, maxTicksLimit,boxWidth]
+        return [ctextsize, maxTicksLimit, boxWidth]
     }
 
-    const [ctextsize, maxTicksLimit,boxWidth] =textsizechart()
-       console.log(boxWidth)
+    const [ctextsize, maxTicksLimit, boxWidth] = textsizechart()
+    console.log(boxWidth)
     var ctx = document.getElementById("myChart").getContext('2d');
     ctx.canvas.parentNode.style.width = '100%'
 
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: Object.keys(fdata[173]['values'][0]).slice(typed),
+            labels: Object.keys(fdata[174]['values'][0]).slice(typed),
             datasets: [{
-                label: (fdata)[173]["Country-Region"],
-                data: Object.values(fdata[173]['values'][0]).slice(typed),
+                label: (fdata)[174]["Country-Region"],
+                data: Object.values(fdata[174]['values'][0]).slice(typed),
                 pointBorderColor: "#6495ED",
                 borderColor: "#6495ED"
             }]
@@ -343,7 +317,8 @@
                     type: 'linear',
                     ticks: {
                         fontSize: ctextsize,
-                        beginAtZero: true}
+                        beginAtZero: true
+                    }
                 }],
                 xAxes: [{
                     ticks: {
@@ -353,7 +328,7 @@
 
                     }
                 }]
-            } 
+            }
 
         }
     });
@@ -362,10 +337,10 @@
     var myChartchange = new Chart(ctxc, {
         type: 'line',
         data: {
-            labels: Object.keys(fdata[173]['diff'][0]).slice(typed),
+            labels: Object.keys(fdata[174]['diff'][0]).slice(typed),
             datasets: [{
-                label: (fdata)[173]["Country-Region"],
-                data: Object.values(fdata[173]['diff'][0]).slice(typed),
+                label: (fdata)[174]["Country-Region"],
+                data: Object.values(fdata[174]['diff'][0]).slice(typed),
                 pointBorderColor: "#6495ED",
                 borderColor: "#6495ED"
             }]
@@ -379,7 +354,7 @@
                     boxWidth: boxWidth
                 }
             },
-        
+
             scales: {
                 yAxes: [{
                     type: 'linear',
@@ -412,27 +387,28 @@
         var sel = $('#radioBtn > .active').data('title')
         if (sel == "W") { var typed = -Object.keys(fdata[0]['values'][0]).length }
         else if (sel == "Y") { var typed = -7 }
-        else if (sel == "N") {var typed=-30 }
-        
+        else if (sel == "N") { var typed = -30 }
+
         if (dropv == 'confirmed') { var typec = fdata }
         else if (dropv == 'deaths') { var typec = deathdata }
         else { var typec = recdata }
 
-    return [typec,typed]}
+        return [typec, typed]
+    }
 
-    function pushdata(typec,typed,colour) {
-                myChart.data.datasets.push({
-                    label: typec[i]["Country-Region"],
-                    data: Object.values(typec[i]['values'][0]).slice(typed),
-                    pointBorderColor: colour,
-                    borderColor: colour
-                });
-                myChartchange.data.datasets.push({
-                    label: typec[i]["Country-Region"],
-                    data: Object.values(typec[i]['diff'][0]).slice(typed),
-                    pointBorderColor: colour,
-                    borderColor: colour
-                })
+    function pushdata(typec, typed, colour) {
+        myChart.data.datasets.push({
+            label: typec[i]["Country-Region"],
+            data: Object.values(typec[i]['values'][0]).slice(typed),
+            pointBorderColor: colour,
+            borderColor: colour
+        });
+        myChartchange.data.datasets.push({
+            label: typec[i]["Country-Region"],
+            data: Object.values(typec[i]['diff'][0]).slice(typed),
+            pointBorderColor: colour,
+            borderColor: colour
+        })
     }
     function changelabels(typed) {
         for (i = 0; i < Object.keys(fdata[0]['values'][0]).length; i++) {
@@ -451,58 +427,58 @@
         for (i = 0; i < myChart.data.datasets.length; i++) { labarr.push(myChart.data.datasets[i].label) }
         removeallDataset()
         for (i = 0; i < fdata.length; i++) {
-            
+
             if (labarr.includes(typec[i]["Country-Region"])) {
                 var colour = getRandomColor()
-                pushdata(typec,typed,colour)
+                pushdata(typec, typed, colour)
             }
         }
         changelabels(typed)
         myChart.update();
         myChartchange.update();
-    };   
-        
+    };
+
     function addDataset() {
         let dropt = $('#dropdownop :selected').text()
         let dropcoun = $('#dropdownop').val()
         const [typec, typed] = chartstatus();
 
-            for (i = 0; i < myChart.data.datasets.length; i++) {
-                if (dropt == myChart.data.datasets[i].label) {
-                    
-                    return
-                }
-            }
-                var colour = getRandomColor()
-                myChart.data.datasets.push({
-                    label: dropt,
-                    data: Object.values(typec[dropcoun]['values'][0]).slice(typed),
-                    pointBorderColor: colour,
-                    borderColor: colour
-                });
-                myChartchange.data.datasets.push({
-                    label: dropt,
-                    data: Object.values(typec[dropcoun]['diff'][0]).slice(typed),
-                    pointBorderColor: colour,
-                    borderColor: colour
-                })
-                
+        for (i = 0; i < myChart.data.datasets.length; i++) {
+            if (dropt == myChart.data.datasets[i].label) {
 
-        
+                return
+            }
+        }
+        var colour = getRandomColor()
+        myChart.data.datasets.push({
+            label: dropt,
+            data: Object.values(typec[dropcoun]['values'][0]).slice(typed),
+            pointBorderColor: colour,
+            borderColor: colour
+        });
+        myChartchange.data.datasets.push({
+            label: dropt,
+            data: Object.values(typec[dropcoun]['diff'][0]).slice(typed),
+            pointBorderColor: colour,
+            borderColor: colour
+        })
+
+
+
         changelabels(typed)
         myChart.update();
         myChartchange.update();
-        }
-    
+    }
+
 
     function addatopDataset() {
         const [typec, typed] = chartstatus();
 
         let topcountarr = []
-        for (var i = 0; i < topcountries.length; i++) {topcountarr.push(topcountries[i]['Country-Region'])}
+        for (var i = 0; i < topcountries.length; i++) { topcountarr.push(topcountries[i]['Country-Region']) }
         let currentchart = []
         console.log(topcountries)
-        for (i = 0; i < myChart.data.datasets.length; i++) {currentchart.push(myChart.data.datasets[i].label)}
+        for (i = 0; i < myChart.data.datasets.length; i++) { currentchart.push(myChart.data.datasets[i].label) }
         for (i = 0; i < fdata.length; i++) {
             if (topcountarr.includes(fdata[i]["Country-Region"]) & !currentchart.includes(fdata[i]["Country-Region"])) {
                 var colour = getRandomColor()
@@ -518,12 +494,13 @@
                     pointBorderColor: colour,
                     borderColor: colour
                 })
-            } 
+            }
             changelabels(typed)
             myChart.update();
             myChartchange.update();
         }
-    ;}
+        ;
+    }
 
     function removeDataset() {
         let dropt = $('#dropdownop :selected').text()
@@ -546,7 +523,7 @@
         }
         myChart.update();
         myChartchange.update();
-        }
+    }
     function getRandomColor() {
         let letters = '0123456789ABCDEF';
         let color = '#';
@@ -574,7 +551,7 @@
 <script src="js/table.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"/>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 <script src="js/cookies.js"></script>
 

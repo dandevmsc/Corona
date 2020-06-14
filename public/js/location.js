@@ -32,10 +32,17 @@ function showPosition(position) {
     var ar = []
     for (i = 0; i < locdatai.length; i++) {
         ar.push(getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, locdatai[i]['Lat'], locdatai[i]['Long-']))
+        
+
     }
+    
     var j = ar.indexOf(Math.min(...ar));
+    if (locdatai[j]['Deaths'].toLocaleString() == "N/A" & locdatai[j]['Recovered'].toLocaleString()=="N/A" & locdatai[j]['Active'].toLocaleString() == "N/A") {
+        x.innerHTML = "Your Location: " + locdatai[j]['Combined-Key'] + " Confirmed: " + locdatai[j]['Confirmed'].toLocaleString()
+    }
+    else {
     x.innerHTML = "Your Location: " + locdatai[j]['Combined-Key'] + " Confirmed: " + locdatai[j]['Confirmed'].toLocaleString() + "; Deaths: " + locdatai[j]['Deaths'].toLocaleString() + "; Recovered: " + locdatai[j]['Recovered'].toLocaleString() + "; Active: " + locdatai[j]['Active'].toLocaleString()
-}
+}}
 
 function showError(error) {
     switch (error.code) {

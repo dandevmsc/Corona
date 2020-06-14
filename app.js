@@ -18,7 +18,7 @@ require('./models');
 var dotenv = require('dotenv');
 dotenv.config();
 //var coro = mongoose.model('Deaths')
-var url = 'mongodb://' + process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + '@145.14.157.129/coronadb';
+var url = 'mongodb://' + process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + '@' + process.env.Mongodbip;
 
 const MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient(url);
@@ -94,7 +94,53 @@ app.get('/cookiepolicy', function (req, res, next) {
 app.get('/robot.txt', function (req, res, next) {
     res.render('robot')
 })
+app.get('/vaccine', function (req, res, next) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db, callback) {
+        if (err) throw err;
+        var dbo = db.db("coronadb");
+        dbo.collection("vaccine").find({}).toArray(function (err, result) {
+            if (err) throw err;
+            var vaccinecat = gettimeserieslabeldeep(result, 'description', 'breakdownproduct', 'Treatment vs Vaccine','Vaccine','Product Category');
+            var vaccinenum = gettimeserieslabeldeep(result, 'description', 'breakdownproduct', 'Treatment vs Vaccine', 'Vaccine', 'Productcategorynum');
+            var Treatmentstagcat = gettimeserieslabeldeep(result, 'description', 'breakdownstage', 'Treatment vs Vaccine', 'Treatment', 'Stage of Development');
+            var Treatmentstagnum = gettimeserieslabeldeep(result, 'description', 'breakdownstage', 'Treatment vs Vaccine', 'Treatment', 'Productcategorynum');
 
+            var vaccinestagcat = gettimeserieslabeldeep(result, 'description', 'breakdownstage', 'Treatment vs Vaccine', 'Vaccine', 'Stage of Development');
+            var vaccinestagnum = gettimeserieslabeldeep(result, 'description', 'breakdownstage', 'Treatment vs Vaccine', 'Vaccine', 'Productcategorynum');
+            var Treatmentcat = gettimeserieslabeldeep(result, 'description', 'breakdownproduct', 'Treatment vs Vaccine', 'Treatment', 'Product Category');
+            var Treatmentnum = gettimeserieslabeldeep(result, 'description', 'breakdownproduct', 'Treatment vs Vaccine', 'Treatment', 'Productcategorynum');
+            console.log(vaccinecat)
+            res.render('vaccine', {
+                vaccinecat :       JSON.stringify(vaccinecat),
+                vaccinenum :       JSON.stringify(vaccinenum),
+                Treatmentcat :     JSON.stringify(Treatmentcat),
+                Treatmentnum:       JSON.stringify(Treatmentnum),
+
+                vaccinestagcat: JSON.stringify(vaccinestagcat),
+                vaccinestagnum: JSON.stringify(vaccinestagnum),
+                Treatmentstagcat: JSON.stringify(Treatmentstagcat),
+                Treatmentstagnum: JSON.stringify(Treatmentstagnum)
+
+            })
+            db.close();
+        })
+    })
+})
+app.get('/mobility', function (req, res, next) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db, callback) {
+        if (err) throw err;
+        var dbo = db.db("coronadb");
+        dbo.collection("mobility").find({}).toArray(function (err, result) {
+            if (err) throw err;
+            var mobility = result;
+            res.render('mobility', {
+                mobility: JSON.stringify(mobility)
+
+            })
+
+        })
+    })
+})
 
 function gettimeserieslabel(postData, kval, ckval,pval) {
     var arr = [];
@@ -105,6 +151,16 @@ function gettimeserieslabel(postData, kval, ckval,pval) {
     }
     return arr;
 }
+function gettimeserieslabeldeep(postData, kval, ckval, pval,jval,dval) {
+    var arr = [];
+    for (var i = 0; i < postData.length; i++) {
+        if (postData[i][kval] == ckval && postData[i][pval] == jval) {
+            arr.push(postData[i][dval]);
+        }
+    }
+    return arr;
+}
+
 
 function getnestarr(postData, kval, ckval) {
     var arr = [];
@@ -117,18 +173,16 @@ function getnestarr(postData, kval, ckval) {
 }
 
 
-function gettimeseries(postData) {
-    var datai = [];
-    var i = 0;
-    postData.forEach(function (content, callback) {
-        //console.log(content)
-        datai=content["0"]
+function gettimeseries(postData, kval, ckval) {
+    var arr = [];
+    for (var i = 0; i < postData.length; i++) {
+        if (postData[i][kval] == ckval) {
+            arr.push(postData[i]);
         }
-
-    );
-    return datai;
-    
+    }
+    return arr;
 }
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

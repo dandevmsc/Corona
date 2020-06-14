@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <meta name="description" content=""/>
+      <meta name="author" content=""/>
+
+      <title>Corona</title>
+      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+      <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
+      <link rel="stylesheet" type="text/css" href="css/site.css"/>
+
+      <link href="css/sb-admin-2.min.css" rel="stylesheet"/>
+      <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+</head>
+  <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+  <body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      
+          <script data-name="BMC-Widget" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="coronavirusme" data-description="Support me on Buy me a coffee!" data-message="If you think the content is useful, buy me a Coffee!" data-color="#5F7FFF" data-position="right" data-x_margin="18" data-y_margin="18"></script>
+
+      <div id="content-wrapper" class="d-flex flex-column">
+          <div id="content">
+
+              <nav class="navbar navbar-light" style="background-color: #fff;">
+                  <div class="card-body d-flex h1 p-2 align-items-center justify-content-center text-gray-800 font-weight-bold">
+                      <a id="titlepage">Corona Virus Near Me</a>
+                  </div>
+              </nav>
+
+              <div class="row align-items-center justify-content-center" style="background-color: #fff;">
+                  <a class=" h3 font-weight-bold text-primary mr-4" href="/">Track the Data</a>
+                  <!--a class=" h3 font-weight-bold text-primary" href="/mobility">Track Mobility</!--a>-->
+              </div>
+              <iframe class="airtable-embed" src="https://airtable.com/embed/shrYsTpkoiKUOuaxg?backgroundColor=blue&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="800" style="background: transparent; border: 1px solid #ccc;"></iframe>
+              <div class="row">
+                  <div class="card-body col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                      <a class="twitter-timeline" data-width="800" data-height="500" data-theme="light" href="https://twitter.com/coronanearme/lists/covid-19-researchers?ref_src=twsrc%5Etfw">A Twitter List by coronanearme</a>
+                      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="card-body col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <div class="card shadow mb-2" id="chartcardsha2">
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                              <h8 class="m-0 font-weight-bold text-primary"> Vaccine Category</h8>
+                          </div>
+                          <div class="chart-area">
+                              <canvas id="piechart" style="min-height:280px"></canvas>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <div class="card shadow mb-2" id="chartcardsha2">
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                              <h8 class="m-0 font-weight-bold text-primary"> Treatment Category</h8>
+                          </div>
+                          <div class="chart-area">
+                              <canvas id="piechart1" style="min-height:280px"></canvas>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="card-body col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <div class="card shadow mb-2" id="chartcardsha2">
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                              <h8 class="m-0 font-weight-bold text-primary"> Vaccine Stage</h8>
+                          </div>
+                          <div class="chart-area">
+                              <canvas id="piechart2" style="min-height:280px"></canvas>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                      <div class="card shadow mb-2" id="chartcardsha2">
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                              <h8 class="m-0 font-weight-bold text-primary"> Treatment Stage</h8>
+                          </div>
+                          <div class="chart-area">
+                              <canvas id="piechart3" style="min-height:280px"></canvas>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <footer class="sticky-footer bg-white">
+                  <div class="container my-auto">
+                          Sources:
+                          <a href="https://milkeninstitute.org/">Milken Institute</a>
+                          
+
+
+                  </div>
+              </footer>
+          </div>
+          </div>
+        </div>
+  </body>
+  
+      <!-- Bootstrap core JavaScript-->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+      <script src="js/sb-admin-2.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+      <script src="vendor/chart.js/Chart.min.js"></script>
+      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-140025504-2"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-140025504-2');
+      </script>
+
+      <script>
+
+
+
+          var vaccat =<%- vaccinecat %>
+          var vacnum =<%- vaccinenum %>
+          var treatcat =<%- Treatmentcat %>
+          var treatnum =<%- Treatmentnum %>
+
+          var vaccatstag =<%- vaccinestagcat %>
+          var vacnumstag =<%- vaccinestagnum %>
+          var treatcatstag =<%- Treatmentstagcat %>
+          var treatnumstag =<%- Treatmentstagnum %>
+
+
+          var colour2 = ['#ee6868' ,'#eeab68'  ,'#eeee68' ,'#abee68' ,'#68ee68'  ,'#68eeab' ,'#68eeee'  ,'#68abee' ,'#6868ee'  ,'#8968ee' ,'#ab68ee' ,'#cd68ee' ,'#ee68ee' ,'#ee68cd','#ee68ab'];        
+
+          function textsizechart() {
+              var winWidth = $(window).width()
+              if (winWidth <= 599) {
+                  var ctextsize = 6
+                  var maxTicksLimit = 10
+                  var boxWidth = 5
+
+              }
+              else if (winWidth > 599 && winWidth < 1024) {
+                  var ctextsize = 10
+                  var maxTicksLimit = 20
+                  var boxWidth = 1
+              }
+              else {
+                  var ctextsize = 12
+                  var maxTicksLimit = 90
+                  var boxWidth = 40
+              }
+              return [ctextsize, maxTicksLimit, boxWidth]
+          }
+          const [ctextsize, maxTicksLimit, boxWidth] = textsizechart();
+          [vaccat, treatcat, vaccatstag, treatcatstag].forEach(function (number) {
+
+              if (number == vaccat) { var val = vacnum; var title = 'Vaccine'; var pos = 'piechart' }
+              else if (number == treatcat) { var val = treatnum; var title = 'Treatment'; var pos = 'piechart1' }
+              else if (number == vaccatstag) { var val = vacnumstag; var title = 'Vaccine'; var pos = 'piechart2' }
+              else if (number == treatcatstag) { var val = treatnumstag; var title = 'Treatment'; var pos = 'piechart3' }
+
+              var cctx = document.getElementById(pos).getContext('2d');
+              cctx.canvas.parentNode.style.width = '100%'
+              var myPieChart = new Chart(cctx, {
+                  type: 'pie',
+                  data: {
+                      datasets: [{
+                          data: val,
+                          label: title,
+                          backgroundColor: colour2
+                      }],
+                      // These labels appear in the legend and in the tooltips when hovering different arcs
+                      labels: number
+                  },
+                  options: {
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      legend: {
+                          labels: {
+                              fontSize: ctextsize,
+                              boxWidth: boxWidth
+                          }
+                      }
+                  }
+              })
+              });
+
+
+              
+
+      </script>
+      
+</html>
