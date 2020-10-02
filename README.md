@@ -1,9 +1,12 @@
 # Corona
 # Homepage
-(public/img/homepage.png)
+
+<img width="250" align='left' src="https://github.com/dandevmsc/Corona/blob/master/public/img/homepage.PNG">
 #Charts
-(public/img/charts.png)
+<img width="250" align='left' src="https://github.com/dandevmsc/Corona/blob/master/public/img/charts.PNG">
 #Vaccine
-(public/img/vaccine.png)
+<img width="250" align='left' src="https://github.com/dandevmsc/Corona/blob/master/public/img/vaccine.PNG">
+
+
 
 
